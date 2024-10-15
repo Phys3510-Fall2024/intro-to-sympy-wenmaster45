@@ -1,0 +1,321 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "9c011f8e-c91f-4ed2-9aac-7cec86e4a071",
+   "metadata": {},
+   "source": [
+    "# Working in SymPy\n",
+    "\n",
+    "`SymPy` is a package for symbolic manipulation of expressions, equations, and calculus. The [website](https://docs.sympy.org/latest/index.html) for `SymPy` has tutorials explaining how things work. You can also use the `help()` and `dir()` functions to explore the properties of the `SymPy` package.\n",
+    "\n",
+    "The way it is structured is that the different mathematical objects are defined with capital letters (e.g. `Symbol`, `Function`, `Matrix`) while the functions and utilities are defined with lower-case leading letters (e.g. `simplify`, `dsolve`)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f02f4bb2-26fe-46c7-b8fb-4336f4c2576e",
+   "metadata": {},
+   "source": [
+    "### 1. **Basic Operations**\n",
+    "\n",
+    "- `symbols()`: Define symbolic variables for expressions.\n",
+    "- `subs()`: Substitute values or expressions for variables.\n",
+    "- `sympify()`: Convert strings or Python objects to SymPy expressions.\n",
+    "- `evalf()`: Evaluate expressions to floating-point numbers.\n",
+    "- `lambdify()`: Convert symbolic expressions to numerical functions (supports backends like NumPy and SciPy).\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c273a14c-4628-42e5-8431-0cbd58476e53",
+   "metadata": {},
+   "source": [
+    "### 2. **Simplifying Expressions**\n",
+    "\n",
+    "- `simplify()`: Simplify general expressions (algebraic, trigonometric, etc.).\n",
+    "- `expand()`: Expand an expression (e.g., expand a polynomial or product).\n",
+    "- `factor()`: Factor expressions (e.g., factor a polynomial).\n",
+    "- `collect()`: Collect like terms in an expression.\n",
+    "- `apart()`: Partial fraction decomposition of rational expressions.\n",
+    "- `cancel()`: Cancel common factors in a rational function.\n",
+    "- `trigsimp()`: Simplify trigonometric expressions.\n",
+    "- `logcombine()`: Combine logarithmic terms into a single expression.\n",
+    "- `powsimp()`: Simplify powers and exponents.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "17af0651-4cea-4dee-8b50-ff48f9118935",
+   "metadata": {},
+   "source": [
+    "### 3. **Calculus**\n",
+    "\n",
+    "#### 3.1 Derivatives\n",
+    "- `diff()`: Compute derivatives of expressions (supports higher-order derivatives).\n",
+    "\n",
+    "#### 3.2 Integrals\n",
+    "- `integrate()`: Compute symbolic integrals (both definite and indefinite).\n",
+    "- `integrate(f, (var, a, b))`: Compute definite integrals over an interval.\n",
+    "  \n",
+    "#### 3.3 Limits\n",
+    "- `limit()`: Compute the limit of an expression as a variable approaches a value.\n",
+    "\n",
+    "#### 3.4 Series\n",
+    "- `series()`: Expand a function in a Taylor or Laurent series around a point.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "87d5dd3d-d260-4df4-a02b-0e3e1525ffde",
+   "metadata": {},
+   "source": [
+    "### 4. **Linear Algebra**\n",
+    "\n",
+    "- `Matrix()`: Define symbolic matrices.\n",
+    "- `det()`: Compute the determinant of a matrix.\n",
+    "- `inv()`: Compute the inverse of a matrix.\n",
+    "- `eigenvals()`: Compute eigenvalues of a matrix.\n",
+    "- `eigenvects()`: Compute eigenvectors of a matrix.\n",
+    "- `solve_linear_system()`: Solve a system of linear equations.\n",
+    "- `transpose()`: Transpose a matrix.\n",
+    "- `rref()`: Compute the reduced row echelon form of a matrix.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fcdad056-2414-42d9-844a-ed5dd00f58ec",
+   "metadata": {},
+   "source": [
+    "### 5. **Differential Equations**\n",
+    "\n",
+    "- `dsolve()`: Solve ordinary differential equations (ODEs).\n",
+    "- `Function()`: Define a function that represents the solution of a differential equation.\n",
+    "- `Eq()`: Set up an equation (useful for defining differential equations).\n",
+    "- `classify_ode()`: Classify an ODE to determine its solution method.\n",
+    "- `checkodesol()`: Check whether a solution satisfies a given differential equation.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "83afdf77-b9ef-49ac-81cb-8808919406cc",
+   "metadata": {},
+   "source": [
+    "### 6. **Solving Equations**\n",
+    "\n",
+    "- `solve()`: Solve algebraic equations (returns roots or solutions).\n",
+    "- `nonlinsolve()`: Solve systems of nonlinear equations.\n",
+    "- `linsolve()`: Solve systems of linear equations.\n",
+    "- `solvers.solvers.solve()`: A more general solver for symbolic equations.\n",
+    "- `solvers.decomp_ineq()`: Decompose inequalities for solving them.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d553c212-6c9a-4bae-8f59-eac3f40886b5",
+   "metadata": {},
+   "source": [
+    "### 7. **Polynomials**\n",
+    "\n",
+    "- `Poly()`: Create a polynomial object for more control over polynomials.\n",
+    "- `degree()`: Get the degree of a polynomial.\n",
+    "- `roots()`: Find the roots of a polynomial.\n",
+    "- `gcd()`: Compute the greatest common divisor of polynomials.\n",
+    "- `lcm()`: Compute the least common multiple of polynomials.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "29b03144-71d0-437e-88f1-bdc36b948df3",
+   "metadata": {},
+   "source": [
+    "### 8. **Trigonometry**\n",
+    "\n",
+    "- `sin()`, `cos()`, `tan()`: Basic trigonometric functions.\n",
+    "- `asin()`, `acos()`, `atan()`: Inverse trigonometric functions.\n",
+    "- `expand_trig()`: Expand trigonometric expressions (e.g., using angle addition formulas).\n",
+    "- `trigsimp()`: Simplify trigonometric expressions.\n",
+    "- `rewrite()`: Rewrite trigonometric functions in terms of other functions (e.g., rewrite `sin(x)` in terms of exponential functions).\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "00b21f75-b3d3-4452-83b2-c9e95ae4a2ca",
+   "metadata": {},
+   "source": [
+    "### Here's an example of how to solve a quadratic equation"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 93,
+   "id": "1292573a-ec37-405d-b771-6148870a5196",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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",
+      "text/latex": [
+       "$\\displaystyle \\left[ \\frac{- b - \\sqrt{- 4 a c + b^{2}}}{2 a}, \\  \\frac{- b + \\sqrt{- 4 a c + b^{2}}}{2 a}\\right]$"
+      ],
+      "text/plain": [
+       "⎡        _____________          _____________⎤\n",
+       "⎢       ╱           2          ╱           2 ⎥\n",
+       "⎢-b - ╲╱  -4⋅a⋅c + b    -b + ╲╱  -4⋅a⋅c + b  ⎥\n",
+       "⎢─────────────────────, ─────────────────────⎥\n",
+       "⎣         2⋅a                    2⋅a         ⎦"
+      ]
+     },
+     "execution_count": 93,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import sympy as sp\n",
+    "\n",
+    "# Define the symbolic variables\n",
+    "a, b, c, x = sp.symbols('a b c x')\n",
+    "\n",
+    "# Define the quadratic equation: ax^2 + bx + c = 0\n",
+    "quadratic_eq = sp.Eq(a*x**2 + b*x + c, 0)\n",
+    "\n",
+    "# Solve the quadratic equation for x\n",
+    "solutions = sp.solve(quadratic_eq, x)\n",
+    "\n",
+    "# Display the solutions\n",
+    "solutions\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6f130c0d-870b-4e8e-b398-f4a3ea395e30",
+   "metadata": {},
+   "source": [
+    "### Here's an example of how to solve a differential equation"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 94,
+   "id": "1d908ff4-300b-41da-b3a2-e4b466632edb",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAKUAAAAeCAYAAABNJt5sAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAGgElEQVR4Ae2b23EUOxCGbWoD4JIBZGDsCIAMuEQAZADlN79RkIEhAhdkACcCwBkcMgCcgfm/RlJpZ7UzmpGG3a1VV8nStFqtVk/r12XWh9fX1weNmgemeODs7Oyh2p0rPVH5coqOVJvDFpQptzRergcUjL+VbuXK58gtcoSazPZ6YC60yhmx+r4ruR85smNkGlKO8daWys6BVjlDVb+PJXeqdKF0h1w8W8aVH+n5WOme0k+lK6X74r9U3ksNKXvds/2VesmzoFXmyB9J7lw2vHd2sL+EBx07PsH5VuVHSm+tRn9Uxm6CGqSl/Ek8Q90WlPLGjhMvnZf8Slk1tMr0CUj42skSWIFkz3v3wGHoM2XxvCyPH5UeiAeCUvdd2X3KN/jTaKc94NHqnUYBUgU0UtnQSjnLK0hFoFgQKK9CPqikjGU59C0+kwTCvi8UxHvh8pvK70ZtYfMM/6AhJV7YbSpBq9KRv1Yg+eBjP2nB55Se6JkgBCWfqYyd31zdbeW/XNlnPIO2ly0ovUt2ONcL9+i3glaqA0FBK1s6CRQlv7QWjVp6CMI4EIM+1T0JD6sFApDAjIlnG0eV5VsGLO0n4p6GyiVth3TvSb2hlfwIYg2hFcjl0Wpj7pGtBF/3KumH+MYrvhJyzkDhpymjVDs2wkfKmdGN9sQDet8AmT99g5JfxCsPSilBKXuH+FQ12q1qzyy/Ul5lWRltQGuwVR6YjJQKIE5K/ym3Y3zpqKSHK4FwRVCqb5faa+xHsjecXHtsfynZsOypPPmHC2p72NPPYFVJ30PKSw46OJEriFrkrzMGb/xrdbgtevSC+QriL52zzSoNrOyOEoJz9l1y0Hkqw6ott04XOkHgRnvsgUlBqcDxG9TarmNpelpbadO3Wx6w5duhE9cFfDz/7lDLRuLqPiiP753CLX1quJE+qk+Unitx2nqmBH2VTOq0zp0XuqshMJ2Nocj2XF8Mqnc6TyXIDxMgdHOVY/dyxqn4R3rty4lUsurc0fOog2gte6fa4feUpxiuBAJ+UIqDAuSCH9OxHvr2k3yAt72hck7W6CQQ6cPvHVNB+b/kuCIaJKcnSzZSdql28eSKqkJxrC9Cw1RB/WEjYw4/hBWPgw1BOipYJD9I0m3gotx0K/+tRtn9SL6KvSV2LNQYB311owWlup9/UqjIDOzKmQpnTHySBA0IatAS4k4qrjem+4NOEHWQ1E/1A9FYX0jejwMEXEEk1TMWPrNxauYw44kXD38Owi828dx4si/LK9s72Y6FBsDFt3cYqPim4ykc2OURWOuWnm/SF64tJMeVEQhl8sr7kIp2BPymKNsXGgeI9FO5Xforf6j0WYlJ7MmvJjfFZ8WA+CUPcsnPcyZR9gf/ecCw4Fdfj5VSK1O3p5r2TrYDpPTBwgBQFJZu1YGi8LIdqDY+wNXMKBXovq6b9wV7V7b680hfgJIPvBFqyxcJgo1fu/hJiU/5neC//FrFUs0WxK9+7F/tHXtbe/Ka9k62YxEZCIIFRHN8jORLSzfQmIkEay+pHe2RC7NUPGunPOUo6vwsH9LNrEb/GMrZU6Kv1xeynWUZW33w0QZiTEzkmO+Dg/rZSbbh6+DvCR1WsbfEjjgocXTsTMaT2k/CRw75JZIhvKiPShx0QFf2FQR1rNcOEuKnCKSMZVMyxpNOdM9FQ75gnCliQjEGT4yF5XqFZH/ukrrSdkbGVtgbByUGBYfKaaAQKfXyQc4TpS75NpyyeXFLqOd09s1E2392lW7geYwvYvPwXxywLPFL/nN+ge8PSXH7TZe3wt44KNkDcB+JYZwm2YtAqf3khfggYpeQZU9KcB5IF6dO9lkstXzb/qVy39KybhKg7l/SkC+u1hhDQBLQRhor/7vCIQefct0F8bwUqH/Zm/+7Lfau/UGGcyQnStBrhcTHyeHubUVgJEP6WDIJYD8ZRmqYT1w2EVRLvhCP+z9+QMKqYaQyP5C4pzwEpqtq2QgP3EBWTmQPCJIZqcyM58rjzV9O8i8vquaMB53QuVEa4Qt8YysCBqsd5fAfefAaTfOABaWacrl9Eamwrzpy9NqlVnUs01x/gHBF5HSgK1xHFSksa5zlC9nKNQ8X5kxo7iA5sfsPBGUW7HnrhRs/KHXbOZfl81zl1F6y6y5eBHvL+MK4K5PzzJ6zJurm9LlOJtsX8hGyjSp7YO2eMrcfvRiQkuuNSRfEagfKtGUv1+F7IPcHecvVATCLU3MAAAAASUVORK5CYII=",
+      "text/latex": [
+       "$\\displaystyle y{\\left(x \\right)} = y_{0} e^{- \\frac{b x}{a}} e^{\\frac{b x_{0}}{a}}$"
+      ],
+      "text/plain": [
+       "           -b⋅x   b⋅x₀\n",
+       "           ─────  ────\n",
+       "             a     a  \n",
+       "y(x) = y₀⋅ℯ     ⋅ℯ    "
+      ]
+     },
+     "execution_count": 94,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import sympy as sp\n",
+    "\n",
+    "# Define the symbolic variables and function\n",
+    "x, x0, y0, a, b = sp.symbols('x x0 y0 a b')  # Independent variable, constants, initial condition\n",
+    "y = sp.Function('y')(x)  # Dependent variable y as a function of x\n",
+    "\n",
+    "# Define the first-order differential equation: a*y' + b*y = 0\n",
+    "diff_eq = sp.Eq(a * y.diff(x) + b * y, 0)\n",
+    "\n",
+    "# Solve the differential equation\n",
+    "general_solution = sp.dsolve(diff_eq, y)\n",
+    "\n",
+    "# Extract the solution for y(x)\n",
+    "solution_y = general_solution.rhs\n",
+    "\n",
+    "# Apply the initial condition: y(x0) = y0\n",
+    "initial_condition = sp.Eq(solution_y.subs(x, x0), y0)\n",
+    "\n",
+    "# Solve for the constant C1\n",
+    "C1_value = sp.solve(initial_condition, sp.symbols('C1'))[0]\n",
+    "\n",
+    "# Substitute C1 back into the general solution\n",
+    "solution_with_ic = general_solution.subs(sp.symbols('C1'), C1_value)\n",
+    "\n",
+    "# Display the solution with initial conditions\n",
+    "solution_with_ic\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3cc4df62-649e-44a5-8162-29d985bff03d",
+   "metadata": {},
+   "source": [
+    "## Assignment (1): Use `SymPy` to test the solutions we derived in class last week. \n",
+    "\n",
+    "$Q_{tr} = A cos(\\omega_\\gamma t) + B sin(\\omega_\\gamma t)$\n",
+    "\n",
+    "and \n",
+    "\n",
+    "$Q_{st} = \\bar{C} cos(\\omega t - \\phi)$\n",
+    "\n",
+    "where\n",
+    "\n",
+    "$\\omega_\\gamma = \\omega_0^2 - \\gamma^2$,\n",
+    "\n",
+    "$\\bar{C} = \\frac{F_0/m}{\\sqrt{(\\omega_0^2-\\omega^2)^2-4\\gamma^2\\omega^2}}$,\n",
+    "\n",
+    "and\n",
+    "\n",
+    "$\\phi = \\frac{2\\gamma\\omega}{\\omega_0^2-\\omega^2}$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "acbdddf9-70cf-43bf-9fd0-0716bac5cefd",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7abe929c-4ca7-4690-84b6-216369e0c4a1",
+   "metadata": {},
+   "source": [
+    "## Assignment (2): Create representative plots of $\\bar{C}$ and $\\phi$ \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "fa807cb1-d940-4d81-a6a2-f07ccfc31bb0",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.20"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
